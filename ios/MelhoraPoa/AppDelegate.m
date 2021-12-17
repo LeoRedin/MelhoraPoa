@@ -5,6 +5,8 @@
 #import <React/RCTRootView.h>
 #import <React/RCTConvert.h>
 
+#import <GoogleMaps/GoogleMaps.h>
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -24,8 +26,6 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
-#import <GoogleMaps/GoogleMaps.h>
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -35,6 +35,7 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
   [GMSServices provideAPIKey:@"AIzaSyDZx1qiRzw3ZOZb5d9yj9dOeKuuiakr6aY"];
+
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"MelhoraPoa"
