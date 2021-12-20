@@ -9,9 +9,6 @@ import { RootStore, RootStoreProvider, setupRootStore } from "./models"
 import { ToggleStorybook } from "../storybook/toggle-storybook"
 import { ErrorBoundary } from "./screens/error/error-boundary"
 
-import { enableLogging } from "@gorhom/bottom-sheet"
-enableLogging()
-
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
 
 function App() {
