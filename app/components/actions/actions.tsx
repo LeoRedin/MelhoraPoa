@@ -1,7 +1,9 @@
 import React, { useMemo } from "react"
-import { Dimensions, StyleSheet, Text } from "react-native"
+import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native"
 import Animated, { Extrapolate, interpolate, useAnimatedStyle } from "react-native-reanimated"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import { color } from "../../theme"
 
 interface WeatherProps {
   animatedPosition: Animated.SharedValue<number>
@@ -17,14 +19,16 @@ export const Actions = ({ animatedIndex, animatedPosition }: WeatherProps) => {
   // styles
   const lockedYPosition = useMemo(() => SCREEN_HEIGHT - bottomSafeArea, [bottomSafeArea])
 
+  const defaultSub = 48
+
   const containerAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [
         {
           translateY:
             animatedPosition.value < lockedYPosition
-              ? animatedPosition.value - 24
-              : lockedYPosition - 24,
+              ? animatedPosition.value - defaultSub
+              : lockedYPosition - defaultSub,
         },
         {
           scale: interpolate(animatedIndex.value, [1, 1.25], [1, 0], Extrapolate.CLAMP),
@@ -38,22 +42,21 @@ export const Actions = ({ animatedIndex, animatedPosition }: WeatherProps) => {
   ])
   return (
     <Animated.View style={containerStyle}>
-      <Text style={styles.label}>☁️12°</Text>
+      <TouchableOpacity onPress={() => console.log("here")}>
+        <Icon name="map-marker-plus" size={30} />
+      </TouchableOpacity>
     </Animated.View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 4,
+    backgroundColor: color.primary,
+    borderRadius: 50,
     marginTop: 0,
-    padding: 2,
+    padding: 8,
     position: "absolute",
     right: 12,
     top: 0,
-  },
-  label: {
-    fontSize: 16,
-    lineHeight: 16,
   },
 })
