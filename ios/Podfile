@@ -7,6 +7,8 @@ platform :ios, '12.0'
 require 'json'
 podfile_properties = JSON.parse(File.read('./Podfile.properties.json')) rescue {}
 
+pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
 target 'MelhoraPoa' do
   # React Native Maps dependencies
   rn_maps_path = '../node_modules/react-native-maps'
