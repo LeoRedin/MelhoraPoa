@@ -1,15 +1,14 @@
 import * as React from "react"
 import { storiesOf } from "@storybook/react-native"
 import { StoryScreen, Story, UseCase } from "../../../storybook/views"
-import { color } from "../../theme"
-import { BottomSheet } from "./bottom-sheet"
+import { ActionSheet } from "./action-sheet"
 
-storiesOf("BottomSheet", module)
+storiesOf("ActionSheet", module)
   .addDecorator((fn) => <StoryScreen>{fn()}</StoryScreen>)
   .add("Style Presets", () => (
     <Story>
       <UseCase text="Primary" usage="The primary.">
-        <BottomSheet />
+        <ActionSheet />
       </UseCase>
     </Story>
   ))
